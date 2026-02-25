@@ -6,13 +6,16 @@ export default function App() {
   const [image, setImage] = useState(null);
 
   return (
-    <div style={{ textAlign: "center", padding: 20 }}>
-      <h1>📸 Photobooth</h1>
-      {!image ? (
-        <Camera onCapture={setImage} />
-      ) : (
-        <Editor image={image} onReset={() => setImage(null)} />
-      )}
+    <div className="app-container">
+      <h1 className="title">📸 PHOTOBOOTH</h1>
+
+      <div className="camera-wrapper">
+        {!image ? (
+          <Camera onCapture={setImage} />
+        ) : (
+          <Editor image={image} onReset={() => setImage(null)} />
+        )}
+      </div>
     </div>
   );
 }
