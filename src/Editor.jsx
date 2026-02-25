@@ -9,6 +9,7 @@ export default function Editor({ image, onReset }) {
 
     const img = new Image();
     img.src = image;
+
     img.onload = () => {
       canvas.width = img.width;
       canvas.height = img.height;
@@ -22,18 +23,20 @@ export default function Editor({ image, onReset }) {
     link.href = canvasRef.current.toDataURL("image/png");
     link.click();
   };
+
   return (
-  <div>
-    <canvas ref={canvasRef} />
-
     <div>
-      <button className="primary-btn" onClick={downloadImage}>
-        Tải ảnh
-      </button>
+      <canvas ref={canvasRef} />
 
-      <button className="secondary-btn" onClick={onReset}>
-        Chụp lại
-      </button>
+      <div>
+        <button className="primary-btn" onClick={downloadImage}>
+          Tải ảnh
+        </button>
+
+        <button className="secondary-btn" onClick={onReset}>
+          Chụp lại
+        </button>
+      </div>
     </div>
-  </div>
-);
+  );
+}
