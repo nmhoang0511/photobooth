@@ -4,6 +4,7 @@ import Webcam from "react-webcam";
 export default function Camera({ onCapture }) {
   const webcamRef = useRef(null);
   const [countdown, setCountdown] = useState(null);
+  const [flash, setFlash] = useState(false);
 
   const startCapture = () => {
     let time = 3;
@@ -15,25 +16,50 @@ export default function Camera({ onCapture }) {
 
       if (time === 0) {
         clearInterval(interval);
+
+        // Hiệu ứng flash
+        setFlash(true);
+        setTimeout(() => setFlash(false), 200);
+
         const imageSrc = webcamRef.current.getScreenshot();
         onCapture(imageSrc);
       }
     }, 1000);
   };
+
   return (
-  <div>
-    <Webcam
-      ref={webcamRef}
-      screenshotFormat="image/jpeg"
-      mirrored
-    />
+    <div style={{ position: "relative" }}>
+      {/* Flash effect */}
+      {flash && (
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background: "white",
+            opacity: 0.8,
+            borderRadius: "25px",
+            zIndex: 10
+          }}
+        />
+      )}
 
-    {countdown && countdown > 0 && (
-      <div className="countdown">{countdown}</div>
-    )}
+      <Webcam
+        ref={webcamRef}
+        screenshotFormat="image/jpeg"
+        mirrored
+        style={{
+          width: "100%",
+          borderRadius: "25px"
+        }}
+      />
 
-    <button className="primary-btn" onClick={startCapture}>
-      Chụp ảnh
-    </button>
-  </div>
-);
+      {countdown && countdown > 0 && (
+        <div className="countdown">{countdown}</div>
+      )}
+
+      <button className="primary-btn" onClick={startCapture}>
+        📸 Chụp ảnh
+      </button>
+    </div>
+  );
+}
