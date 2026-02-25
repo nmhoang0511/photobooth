@@ -2,16 +2,23 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Segoe UI", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
-  background: linear-gradient(135deg, #111, #1f1f1f);
-  color: white;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ffd6e8, #cde7ff, #e4ffdc);
+  background-size: 400% 400%;
+  animation: gradientMove 12s ease infinite;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .app-container {
@@ -22,26 +29,27 @@ body {
 }
 
 .title {
-  font-size: 32px;
-  margin-bottom: 30px;
-  letter-spacing: 2px;
+  font-size: 36px;
+  margin-bottom: 25px;
+  color: #333;
+  letter-spacing: 3px;
 }
 
 .camera-wrapper {
-  background: #000;
-  padding: 20px;
-  border-radius: 20px;
-  box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
+  background: white;
+  padding: 25px;
+  border-radius: 25px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.15);
   display: inline-block;
 }
 
 video, canvas {
-  border-radius: 15px;
+  border-radius: 20px;
   max-width: 100%;
 }
 
 button {
-  padding: 12px 25px;
+  padding: 12px 28px;
   border-radius: 30px;
   border: none;
   font-size: 16px;
@@ -51,26 +59,27 @@ button {
 }
 
 .primary-btn {
-  background: #ff4d6d;
+  background: #ff7eb9;
   color: white;
 }
 
 .primary-btn:hover {
-  background: #ff1e4d;
+  background: #ff4f9f;
+  transform: scale(1.05);
 }
 
 .secondary-btn {
-  background: #333;
-  color: white;
+  background: #cde7ff;
+  color: #333;
 }
 
 .secondary-btn:hover {
-  background: #555;
+  background: #a9d5ff;
 }
 
 .countdown {
-  font-size: 50px;
+  font-size: 55px;
   font-weight: bold;
-  color: #ff4d6d;
+  color: #ff4f9f;
   margin: 15px 0;
 }
