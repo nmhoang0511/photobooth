@@ -22,13 +22,18 @@ export default function Editor({ image, onReset }) {
     link.href = canvasRef.current.toDataURL("image/png");
     link.click();
   };
-
   return (
+  <div>
+    <canvas ref={canvasRef} />
+
     <div>
-      <canvas ref={canvasRef} style={{ maxWidth: "100%" }} />
-      <br />
-      <button onClick={downloadImage}>Tải ảnh</button>
-      <button onClick={onReset}>Chụp lại</button>
+      <button className="primary-btn" onClick={downloadImage}>
+        Tải ảnh
+      </button>
+
+      <button className="secondary-btn" onClick={onReset}>
+        Chụp lại
+      </button>
     </div>
-  );
-}
+  </div>
+);
