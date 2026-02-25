@@ -17,7 +17,6 @@ export default function Camera({ onCapture }) {
       if (time === 0) {
         clearInterval(interval);
 
-        // Hiệu ứng flash
         setFlash(true);
         setTimeout(() => setFlash(false), 200);
 
@@ -29,7 +28,6 @@ export default function Camera({ onCapture }) {
 
   return (
     <div style={{ position: "relative" }}>
-      {/* Flash effect */}
       {flash && (
         <div
           style={{
