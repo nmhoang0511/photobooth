@@ -20,17 +20,20 @@ export default function Camera({ onCapture }) {
       }
     }, 1000);
   };
-
   return (
-    <div>
-      <Webcam
-        ref={webcamRef}
-        screenshotFormat="image/jpeg"
-        width={400}
-        mirrored
-      />
-      {countdown && <h2>{countdown}</h2>}
-      <button onClick={startCapture}>Chụp (3s)</button>
-    </div>
-  );
-}
+  <div>
+    <Webcam
+      ref={webcamRef}
+      screenshotFormat="image/jpeg"
+      mirrored
+    />
+
+    {countdown && countdown > 0 && (
+      <div className="countdown">{countdown}</div>
+    )}
+
+    <button className="primary-btn" onClick={startCapture}>
+      Chụp ảnh
+    </button>
+  </div>
+);
